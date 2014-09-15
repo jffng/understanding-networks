@@ -68,22 +68,27 @@ void serialEvent(Serial myPort) {
   } 
   else {
     // Add the latest byte from the serial port to array:
-    switch(inByte){
+//    if(inByte != 0) {
+      switch(inByte){
       case 50: 
         myClient.write('u');
+        println(inByte);
         break;
       case 52: 
         myClient.write('l');
+        println(inByte);        
         break;
       case 54: 
         myClient.write('r');
+        println(inByte);
         break;
       case 56: 
         myClient.write('d');
+        println(inByte);
         break;        
-    }
+      }
+//    }
     
-    println(inByte);
     // Send a capital A to request new sensor readings:
     myPort.write('A');
   }
