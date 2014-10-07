@@ -1,0 +1,640 @@
+<gexf version="1.1" xmlns="http://www.gexf.net/1.1draft" xmlns:viz="http://www.gexf.net/1.1draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance">
+  <graph defaultedgetype="undirected" mode="static">
+    <attributes class="node" mode="static">
+      <attribute id="0" title="weight" type="integer" />
+    </attributes>
+    <nodes>
+      <node id="154.54.47.29" label="154.54.47.29">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="206.111.13.193" label="206.111.13.193">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="Kensington" label="Kensington" />
+      <node id="154.54.43.105" label="154.54.43.105">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="bethpage" label="bethpage">
+        <attvalues>
+          <attvalue for="0" value="407" />
+        </attvalues>
+      </node>
+      <node id="154.54.1.161" label="154.54.1.161">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="San Francisco" label="San Francisco" />
+      <node id="154.54.40.73" label="154.54.40.73">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="154.54.41.205" label="154.54.41.205">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="mountain view" label="mountain view">
+        <attvalues>
+          <attvalue for="0" value="90" />
+        </attvalues>
+      </node>
+      <node id="67.83.222.133" label="67.83.222.133">
+        <attvalues>
+          <attvalue for="0" value="25" />
+        </attvalues>
+      </node>
+      <node id="103.4.96.200" label="103.4.96.200">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="67.83.222.137" label="67.83.222.137">
+        <attvalues>
+          <attvalue for="0" value="30" />
+        </attvalues>
+      </node>
+      <node id="31.13.24.24" label="31.13.24.24">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="207.88.13.57" label="207.88.13.57">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="192.168.2.1" label="192.168.2.1">
+        <attvalues>
+          <attvalue for="0" value="24" />
+        </attvalues>
+      </node>
+      <node id="207.88.14.185" label="207.88.14.185">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="Menlo Park" label="Menlo Park" />
+      <node id="66.109.7.42" label="66.109.7.42">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="107.14.19.24" label="107.14.19.24">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="107.14.19.22" label="107.14.19.22">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="Brea" label="Brea" />
+      <node id="66.109.6.159" label="66.109.6.159">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="209.249.122.125" label="209.249.122.125">
+        <attvalues>
+          <attvalue for="0" value="24" />
+        </attvalues>
+      </node>
+      <node id="englewood" label="englewood">
+        <attvalues>
+          <attvalue for="0" value="24" />
+        </attvalues>
+      </node>
+      <node id="184.152.112.151" label="184.152.112.151">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="67.83.222.129" label="67.83.222.129">
+        <attvalues>
+          <attvalue for="0" value="24" />
+        </attvalues>
+      </node>
+      <node id="31.13.24.32" label="31.13.24.32">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="154.54.11.77" label="154.54.11.77">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="198.32.160.56" label="198.32.160.56">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="64.125.21.138" label="64.125.21.138">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="154.24.15.66" label="154.24.15.66">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="64.125.20.245" label="64.125.20.245">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="207.239.16.25" label="207.239.16.25">
+        <attvalues>
+          <attvalue for="0" value="18" />
+        </attvalues>
+      </node>
+      <node id="4.69.155.126" label="4.69.155.126">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="menlo park" label="menlo park">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="202.97.53.249" label="202.97.53.249">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="wilmington" label="wilmington">
+        <attvalues>
+          <attvalue for="0" value="24" />
+        </attvalues>
+      </node>
+      <node id="202.97.90.57" label="202.97.90.57">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="154.54.31.170" label="154.54.31.170">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="216.156.0.17" label="216.156.0.17">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="66.109.6.76" label="66.109.6.76">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="207.239.16.193" label="207.239.16.193">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="4.69.138.194" label="4.69.138.194">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="kensington" label="kensington">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="66.109.6.78" label="66.109.6.78">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="216.239.50.106" label="216.239.50.106">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="154.54.6.226" label="154.54.6.226">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="154.54.47.17" label="154.54.47.17">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="216.156.85.46" label="216.156.85.46">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="66.109.6.161" label="66.109.6.161">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="San Jose" label="San Jose" />
+      <node id="68.173.217.233" label="68.173.217.233">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="68.173.217.237" label="68.173.217.237">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="66.109.10.214" label="66.109.10.214">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="66.109.1.17" label="66.109.1.17">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="206.111.13.65" label="206.111.13.65">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="64.125.24.34" label="64.125.24.34">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="154.54.31.129" label="154.54.31.129">
+        <attvalues>
+          <attvalue for="0" value="18" />
+        </attvalues>
+      </node>
+      <node id="154.24.15.62" label="154.24.15.62">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="brooklyn" label="brooklyn">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="4.35.80.5" label="4.35.80.5">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="4.69.155.144" label="4.69.155.144">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="207.88.12.69" label="207.88.12.69">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="103.4.96.170" label="103.4.96.170">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="68.173.217.229" label="68.173.217.229">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="Palo Alto" label="Palo Alto" />
+      <node id="4.69.138.226" label="4.69.138.226">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="202.97.52.157" label="202.97.52.157">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="san francisco" label="san francisco">
+        <attvalues>
+          <attvalue for="0" value="30" />
+        </attvalues>
+      </node>
+      <node id="Los Gatos" label="Los Gatos" />
+      <node id="154.54.44.69" label="154.54.44.69">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="Mountain View" label="Mountain View" />
+      <node id="184.152.112.63" label="184.152.112.63">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="Brooklyn" label="Brooklyn" />
+      <node id="new york" label="new york">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="66.109.6.14" label="66.109.6.14">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="66.109.6.141" label="66.109.6.141">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="Englewood" label="Englewood" />
+      <node id="205.197.230.38" label="205.197.230.38">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="31.13.24.86" label="31.13.24.86">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="10.240.160.113" label="10.240.160.113" />
+      <node id="154.54.41.53" label="154.54.41.53">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="154.54.29.30" label="154.54.29.30">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="64.125.31.69" label="64.125.31.69">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="los gatos" label="los gatos">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="66.109.6.25" label="66.109.6.25">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="107.14.17.218" label="107.14.17.218">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="Bethpage" label="Bethpage" />
+      <node id="New York" label="New York" />
+      <node id="reston" label="reston">
+        <attvalues>
+          <attvalue for="0" value="24" />
+        </attvalues>
+      </node>
+      <node id="107.14.17.216" label="107.14.17.216">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="beijing" label="beijing">
+        <attvalues>
+          <attvalue for="0" value="42" />
+        </attvalues>
+      </node>
+      <node id="4.69.155.80" label="4.69.155.80">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="154.54.31.125" label="154.54.31.125">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="66.109.6.8" label="66.109.6.8">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="4.68.62.186" label="4.68.62.186">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="64.125.26.161" label="64.125.26.161">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="Beijing" label="Beijing" />
+      <node id="154.54.44.198" label="154.54.44.198">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="207.88.13.73" label="207.88.13.73">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="31.13.26.1" label="31.13.26.1">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="san jose" label="san jose">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="Wilmington" label="Wilmington" />
+      <node id="216.156.1.9" label="216.156.1.9">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="192.168.1.1" label="192.168.1.1">
+        <attvalues>
+          <attvalue for="0" value="68" />
+        </attvalues>
+      </node>
+      <node id="palo alto" label="palo alto">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="64.125.12.161" label="64.125.12.161">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="Reston" label="Reston" />
+      <node id="202.97.53.169" label="202.97.53.169">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="67.83.222.141" label="67.83.222.141">
+        <attvalues>
+          <attvalue for="0" value="50" />
+        </attvalues>
+      </node>
+      <node id="brea" label="brea">
+        <attvalues>
+          <attvalue for="0" value="30" />
+        </attvalues>
+      </node>
+      <node id="154.54.44.202" label="154.54.44.202">
+        <attvalues>
+          <attvalue for="0" value="18" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="154.54.47.29" target="Bethpage" weight="2" />
+      <edge id="1" source="154.54.47.29" target="154.54.47.17" weight="2" />
+      <edge id="2" source="206.111.13.193" target="Englewood" weight="2" />
+      <edge id="3" source="206.111.13.193" target="207.88.13.57" weight="2" />
+      <edge id="4" source="Kensington" target="192.168.1.1" weight="2" />
+      <edge id="5" source="Kensington" target="Menlo Park" weight="2" />
+      <edge id="6" source="154.54.43.105" target="154.54.47.17" weight="2" />
+      <edge id="7" source="154.54.43.105" target="154.54.31.129" weight="2" />
+      <edge id="8" source="154.54.1.161" target="154.54.44.69" weight="2" />
+      <edge id="9" source="154.54.1.161" target="154.54.40.73" weight="2" />
+      <edge id="10" source="San Francisco" target="San Francisco" weight="8" />
+      <edge id="11" source="San Francisco" target="198.32.160.56" weight="2" />
+      <edge id="12" source="San Francisco" target="192.168.1.1" weight="2" />
+      <edge id="13" source="154.54.40.73" target="154.54.31.129" weight="4" />
+      <edge id="14" source="154.54.40.73" target="154.54.41.205" weight="2" />
+      <edge id="15" source="154.54.41.205" target="154.54.31.170" weight="2" />
+      <edge id="16" source="67.83.222.133" target="Bethpage" weight="4" />
+      <edge id="17" source="67.83.222.133" target="67.83.222.141" weight="12" />
+      <edge id="18" source="103.4.96.200" target="103.4.96.170" weight="2" />
+      <edge id="19" source="103.4.96.200" target="Palo Alto" weight="2" />
+      <edge id="20" source="67.83.222.137" target="Bethpage" weight="12" />
+      <edge id="21" source="67.83.222.137" target="67.83.222.129" weight="8" />
+      <edge id="22" source="31.13.24.24" target="31.13.24.32" weight="2" />
+      <edge id="23" source="31.13.24.24" target="31.13.24.86" weight="2" />
+      <edge id="24" source="207.88.13.57" target="216.156.0.17" weight="2" />
+      <edge id="25" source="192.168.2.1" target="Beijing" weight="2" />
+      <edge id="26" source="192.168.2.1" target="68.173.217.229" weight="4" />
+      <edge id="27" source="192.168.2.1" target="Mountain View" weight="2" />
+      <edge id="28" source="192.168.2.1" target="209.249.122.125" weight="2" />
+      <edge id="29" source="192.168.2.1" target="68.173.217.233" weight="2" />
+      <edge id="30" source="192.168.2.1" target="68.173.217.237" weight="2" />
+      <edge id="31" source="192.168.2.1" target="New York" weight="2" />
+      <edge id="32" source="207.88.14.185" target="207.88.12.69" weight="2" />
+      <edge id="33" source="207.88.14.185" target="206.111.13.65" weight="2" />
+      <edge id="34" source="Menlo Park" target="31.13.24.86" weight="2" />
+      <edge id="35" source="Menlo Park" target="Palo Alto" weight="4" />
+      <edge id="36" source="66.109.7.42" target="64.125.26.161" weight="2" />
+      <edge id="37" source="66.109.7.42" target="107.14.17.216" weight="2" />
+      <edge id="38" source="107.14.19.24" target="184.152.112.63" weight="2" />
+      <edge id="39" source="107.14.19.24" target="66.109.6.161" weight="2" />
+      <edge id="40" source="107.14.19.22" target="66.109.6.25" weight="2" />
+      <edge id="41" source="107.14.19.22" target="184.152.112.151" weight="2" />
+      <edge id="42" source="Brea" target="Reston" weight="8" />
+      <edge id="43" source="Brea" target="192.168.1.1" weight="4" />
+      <edge id="44" source="Brea" target="Brea" weight="4" />
+      <edge id="45" source="66.109.6.159" target="66.109.6.161" weight="4" />
+      <edge id="46" source="66.109.6.159" target="207.239.16.25" weight="2" />
+      <edge id="47" source="66.109.6.159" target="66.109.6.78" weight="2" />
+      <edge id="48" source="209.249.122.125" target="209.249.122.125" weight="4" />
+      <edge id="49" source="209.249.122.125" target="64.125.21.138" weight="4" />
+      <edge id="50" source="209.249.122.125" target="192.168.1.1" weight="2" />
+      <edge id="51" source="184.152.112.151" target="66.109.6.76" weight="2" />
+      <edge id="52" source="184.152.112.151" target="68.173.217.233" weight="2" />
+      <edge id="53" source="184.152.112.151" target="68.173.217.237" weight="2" />
+      <edge id="54" source="67.83.222.129" target="Bethpage" weight="8" />
+      <edge id="55" source="31.13.24.32" target="31.13.26.1" weight="2" />
+      <edge id="56" source="154.54.11.77" target="Bethpage" weight="2" />
+      <edge id="57" source="154.54.11.77" target="154.54.6.226" weight="2" />
+      <edge id="58" source="198.32.160.56" target="Bethpage" weight="2" />
+      <edge id="59" source="64.125.21.138" target="64.125.24.34" weight="2" />
+      <edge id="60" source="64.125.21.138" target="64.125.20.245" weight="2" />
+      <edge id="61" source="154.24.15.66" target="154.54.44.202" weight="6" />
+      <edge id="62" source="154.24.15.66" target="154.24.15.62" weight="2" />
+      <edge id="63" source="64.125.20.245" target="64.125.31.69" weight="2" />
+      <edge id="64" source="207.239.16.25" target="207.239.16.193" weight="4" />
+      <edge id="65" source="207.239.16.25" target="66.109.6.161" weight="2" />
+      <edge id="66" source="207.239.16.25" target="216.156.1.9" weight="4" />
+      <edge id="67" source="4.69.155.126" target="4.35.80.5" weight="2" />
+      <edge id="68" source="4.69.155.126" target="4.69.138.194" weight="2" />
+      <edge id="69" source="202.97.53.249" target="202.97.53.169" weight="2" />
+      <edge id="70" source="202.97.53.249" target="202.97.52.157" weight="2" />
+      <edge id="71" source="202.97.90.57" target="66.109.10.214" weight="2" />
+      <edge id="72" source="202.97.90.57" target="202.97.52.157" weight="2" />
+      <edge id="73" source="154.54.31.170" target="154.54.41.53" weight="2" />
+      <edge id="74" source="216.156.0.17" target="216.156.1.9" weight="4" />
+      <edge id="75" source="216.156.0.17" target="205.197.230.38" weight="2" />
+      <edge id="76" source="66.109.6.76" target="107.14.17.218" weight="2" />
+      <edge id="77" source="4.69.138.194" target="4.69.138.226" weight="2" />
+      <edge id="78" source="66.109.6.78" target="184.152.112.63" weight="2" />
+      <edge id="79" source="216.239.50.106" target="Mountain View" weight="2" />
+      <edge id="80" source="216.239.50.106" target="205.197.230.38" weight="2" />
+      <edge id="81" source="154.54.6.226" target="154.54.44.69" weight="2" />
+      <edge id="82" source="216.156.85.46" target="Los Gatos" weight="2" />
+      <edge id="83" source="216.156.85.46" target="207.88.13.73" weight="2" />
+      <edge id="84" source="San Jose" target="Los Gatos" weight="2" />
+      <edge id="85" source="San Jose" target="192.168.1.1" weight="2" />
+      <edge id="86" source="66.109.10.214" target="66.109.1.17" weight="2" />
+      <edge id="87" source="66.109.1.17" target="66.109.6.141" weight="2" />
+      <edge id="88" source="206.111.13.65" target="4.69.155.144" weight="2" />
+      <edge id="89" source="64.125.24.34" target="64.125.26.161" weight="2" />
+      <edge id="90" source="154.54.31.129" target="154.54.44.202" weight="2" />
+      <edge id="91" source="154.54.31.129" target="154.54.31.125" weight="4" />
+      <edge id="92" source="154.24.15.62" target="154.54.41.53" weight="2" />
+      <edge id="93" source="4.35.80.5" target="Bethpage" weight="2" />
+      <edge id="94" source="4.69.155.144" target="4.69.155.80" weight="2" />
+      <edge id="95" source="207.88.12.69" target="207.88.13.73" weight="2" />
+      <edge id="96" source="103.4.96.170" target="Bethpage" weight="2" />
+      <edge id="97" source="68.173.217.229" target="184.152.112.63" weight="4" />
+      <edge id="98" source="Palo Alto" target="31.13.26.1" weight="2" />
+      <edge id="99" source="4.69.138.226" target="4.68.62.186" weight="2" />
+      <edge id="100" source="Los Gatos" target="Los Gatos" weight="2" />
+      <edge id="101" source="Mountain View" target="Mountain View" weight="26" />
+      <edge id="102" source="Mountain View" target="Bethpage" weight="2" />
+      <edge id="103" source="Mountain View" target="192.168.1.1" weight="2" />
+      <edge id="104" source="Brooklyn" target="Englewood" weight="2" />
+      <edge id="105" source="66.109.6.14" target="66.109.6.25" weight="2" />
+      <edge id="106" source="66.109.6.14" target="66.109.6.8" weight="2" />
+      <edge id="107" source="66.109.6.141" target="66.109.6.8" weight="2" />
+      <edge id="108" source="Englewood" target="Englewood" weight="6" />
+      <edge id="109" source="10.240.160.113" target="Bethpage" weight="14" />
+      <edge id="110" source="10.240.160.113" target="192.168.1.1" weight="1068" />
+      <edge id="111" source="154.54.41.53" target="154.54.44.198" weight="4" />
+      <edge id="112" source="154.54.29.30" target="154.54.31.125" weight="4" />
+      <edge id="113" source="64.125.31.69" target="64.125.12.161" weight="2" />
+      <edge id="114" source="107.14.17.218" target="107.14.17.216" weight="2" />
+      <edge id="115" source="Bethpage" target="67.83.222.141" weight="20" />
+      <edge id="116" source="Bethpage" target="4.69.155.80" weight="2" />
+      <edge id="117" source="Bethpage" target="Bethpage" weight="90" />
+      <edge id="118" source="Bethpage" target="New York" weight="2" />
+      <edge id="119" source="Bethpage" target="192.168.1.1" weight="12" />
+      <edge id="120" source="Bethpage" target="64.125.12.161" weight="2" />
+      <edge id="121" source="4.68.62.186" target="Wilmington" weight="2" />
+      <edge id="122" source="Beijing" target="202.97.53.169" weight="2" />
+      <edge id="123" source="Beijing" target="Beijing" weight="12" />
+      <edge id="124" source="Wilmington" target="Wilmington" weight="6" />
+      <edge id="125" source="Wilmington" target="192.168.1.1" weight="2" />
+      <edge id="126" source="Reston" target="154.54.44.202" weight="4" />
+      <edge id="127" source="Reston" target="Reston" weight="2" />
+    </edges>
+  </graph>
+</gexf>
