@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+	</head>
+	<body onload="setup();">
+		<div id="clock">What time is it?</div>
+		<form action="">
+		<select name="hour" id='hour'>
+		</select>
+		<select name="minute" id='minute'>
+		</select>
+		<select name="second" id='second'>
+		</select>
+		</form>
+		<button onclick="timediff()">submit</button>			
+
+		<script type="text/javascript">
+			function setup() {
+				// start the clock
+				setInterval(tick, 1000);
+				var hour = document.getElementById('hour');
+
+				for(var i = 0; i < 24; i++){
+					var option = document.createElement("option");
+					var t = document.createTextNode(i);
+					option.appendChild(t)
+					option.value = i;
+
+					hour.appendChild(option);
+				}
+
+				for(var i = 0; i < 60; i++){
+					var option = document.createElement("option");
+					var t = document.createTextNode(i);
+					option.appendChild(t)
+					option.value = i;
+
+					minute.appendChild(option);
+				}
+
+				for(var i = 0; i < 60; i++){
+					var option = document.createElement("option");
+					var t = document.createTextNode(i);
+					option.appendChild(t)
+					option.value = i;
+
+					second.appendChild(option);
+				}								
+			}
+			
+			function tick() {
+				// get the div that the clock should be in:
+				var myClock = document.getElementById('clock');
+				// get the date:
+				var now = new Date();
+				// put the date in the div:
+				myClock.innerHTML = now;
+			}
+
+			function timediff() {
+				console.log('hour: ' + hour.value);
+				console.log('minute: ' + minute.value);
+				console.log('second: ' + second.value);
+			}
+
+		</script>		
+	</body>
+</html>
