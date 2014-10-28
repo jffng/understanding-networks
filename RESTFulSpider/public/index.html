@@ -5,21 +5,36 @@
 	</head>
 	<body onload="setup();">
 		<div id="clock">What time is it?</div>
-		<form action="">
+		<br>
+		<h4> Spider will drop at this time: </h4>
+		<br>
 		<select name="hour" id='hour'>
 		</select>
 		<select name="minute" id='minute'>
 		</select>
 		<select name="second" id='second'>
 		</select>
-		</form>
-		<button onclick="timediff()">submit</button>			
+		<button onclick="dropAt()">submit</button>	
+		<br>
+		<h3> OR </h3>
+		<br>
+		<h4> Spider will drop in this many hours, minutes, seconds <h4>
+		<input type="text" id="time">
+		<select name="units" id='units'>
+			<option name = 'hours' id='hours'>hour(s)</option>
+			<option name = 'minutes' id='minutes'>minute(s)</option>
+			<option name = 'seconds' id='seconds'>second(s)</option>
+		</select>		
+		<button onclick="dropIn()">submit</button>	
 
 		<script type="text/javascript">
 			function setup() {
 				// start the clock
 				setInterval(tick, 1000);
 				var hour = document.getElementById('hour');
+				var hours = document.getElementById('hours');
+				var seconds = document.getElementById('seconds');
+				var minutes = document.getElementById('minutes');
 
 				for(var i = 0; i < 24; i++){
 					var option = document.createElement("option");
@@ -58,10 +73,20 @@
 				myClock.innerHTML = now;
 			}
 
-			function timediff() {
-				console.log('hour: ' + hour.value);
-				console.log('minute: ' + minute.value);
-				console.log('second: ' + second.value);
+			function dropAt() {
+				var request = new XMLHttpRequest();
+				// GET /output/color/level, and make an asynchronous request:
+				request.open( "POST", '/at/' + hour.value + "/" + minute.value + "/" + second.value, true );
+				// close the request:
+				request.send( null );				
+			}
+
+			function dropIn() {
+				var request = new XMLHttpRequest();
+				// GET /output/color/level, and make an asynchronous request:
+				request.open( "POST", '/in/' + time.value + "/" + units.value, true );
+				// close the request:
+				request.send( null );				
 			}
 
 		</script>		
