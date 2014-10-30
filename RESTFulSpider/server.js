@@ -1,11 +1,6 @@
 var servi = require('servi'),
 	app = new servi(true);
 
-var dropAtHour, dropAtMinute, dropAtSecond;
-var dropTimeInSeconds;
-
-var dropped = true;
-
 ////////////////////////////////////////////////////////////////////////////////////
 ///																				////
 ///							INIT SERVI, SETUP ROUTES							////
@@ -39,40 +34,54 @@ function sendIndex (request) {
 }
 
 function dropInTime (request) {
+	var now = new Date();
+
+	var dropTime;
+
 	switch(request.params.units){
 		case 'hour(s)':
-			dropTimeInSeconds = request.params.time * 3600; 
-			console.log('spider will drop in ' + dropTimeInSeconds + ' seconds!');
+			var hour = request.params.time + now.getHours();
+
+			now = now.setHours(hour);
+
+			dropTime = Math.round(now.getTime() / 1000);
+
 			break;
 		case 'minute(s)':
-			dropTimeInSeconds = request.params.time * 60;
-			console.log('spider will drop in ' + dropTimeInSeconds + ' seconds!');
+			var minute = request.params.time + now.getMinutes();
+
+			now = now.setMinutes(minute);
+
+			dropTime = Math.round(now.getTime() / 1000);
+
 			break;
 		case 'second(s)':
-			dropTimeInSeconds = request.params.time;
-			console.log('spider will drop in ' + dropTimeInSeconds + ' seconds!');
+			var second = request.params.time + now.getSeconds();
+
+			now = now.setSeconds(second);
+
+			dropTime = Math.round(now.getTime() / 1000);
+
 			break;
 		default:
 			break;
 	}
 
-	droppingIn = true;
-	droppingAt = false;
-
-	setInterval(dropInTimer, 1000);
+	console.log(dropTime);
 }
 
 function dropAtTime (request) {
-	dropAtHour = request.params.hour;
-	dropAtMinute = request.params.min;
-	dropAtSecond = request.params.second;
+	var now = new Date();
 
-	droppingAt = true;
-	droppingIn = false;
+	var dropTime;
 
-	setInterval(dropAtTimer, 1000);
+	now.setHours(request.params.hour);
+	now.setMinutes(request.params.min);
+	now.setSeconds(request.params.second);
 
-	request.respond('success');
+	dropTime = Math.round(now.getTime() / 1000);
+
+	console.log(dropTime);
 }
 
 function getSchedule (request) {
@@ -85,40 +94,42 @@ function getSchedule (request) {
 ///																				////
 ////////////////////////////////////////////////////////////////////////////////////
 
-function dropTimer (argument) {
-	if(droppingIn){
+// function dropTimer (argument) {
+// 	if(droppingIn){
 
-	} else if (droppingAt){
+// 	} else if (droppingAt){
 
-	}
-}
+// 	}
+// }
 
-function dropAtTimer() {
-	if(droppingAt){
-		var now = new Date();
+// function dropAtTimer() {
+// 	if(droppingAt){
+// 		var now = new Date();
 
-		hoursUntilDrop = Math.abs(dropAtHour - now.getHours());
-		minutesUntilDrop = Math.abs(dropAtMinute - now.getMinutes());
-		secondsUntilDrop = Math.abs(dropAtSecond - now.getSeconds());	
 
-		// console.log(hoursUntilDrop);
-		// console.log(minutesUntilDrop);
-		// console.log(secondsUntilDrop);
 
-		if(hoursUntilDrop === 0 && minutesUntilDrop === 0 && secondsUntilDrop < 1){
-			console.log('dropping!');
-			droppingAt = false;
-		}
-	}
-}
+// 		hoursUntilDrop = Math.abs(dropAtHour - now.getHours());
+// 		minutesUntilDrop = Math.abs(dropAtMinute - now.getMinutes());
+// 		secondsUntilDrop = Math.abs(dropAtSecond - now.getSeconds());	
 
-function dropInTimer() {
-	if(droppingIn){
-		dropTimeInSeconds--;
+// 		// console.log(hoursUntilDrop);
+// 		// console.log(minutesUntilDrop);
+// 		// console.log(secondsUntilDrop);
 
-		if(dropTimeInSeconds < 1){
-			console.log('dropping!');
-			droppingIn = false;
-		}		
-	}
-}
+// 		if(hoursUntilDrop === 0 && minutesUntilDrop === 0 && secondsUntilDrop < 1){
+// 			console.log('dropping!');
+// 			droppingAt = false;
+// 		}
+// 	}
+// }
+
+// function dropInTimer() {
+// 	if(droppingIn){
+// 		dropTimeInSeconds--;
+
+// 		if(dropTimeInSeconds < 1){
+// 			console.log('dropping!');
+// 			droppingIn = false;
+// 		}		
+// 	}
+// }
