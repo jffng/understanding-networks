@@ -18,26 +18,11 @@
 Process nodejs;    // make a new Process for calling Node
 
 Process date;                 // process used to get the date
-int hours, minutes, seconds;  // for the results
-int lastSecond = -1;          // need an impossible value for comparison
+String unixTime;  // for the results
+String lastTime = "";          // need an impossible value for comparison
+int dropTime = 0;
 
-int hoursToDrop, minutesToDrop, secondsToDrop
 
-void setup() {
-  Bridge.begin();        // initialize Bridge
-  Serial.begin(9600);    // initialize serial
-
-  while (!Serial);              // wait for Serial Monitor to open
-  Serial.println("Time Check");  // Title of sketch
-
-  // run an initial date process. Should return:
-  // hh:mm:ss :
-  if (!date.running()) {
-    date.begin("date");
-    date.addParameter("+%T");
-    date.run();
-  }
-}
 
 void setup() {
   Bridge.begin();	// Initialize the Bridge
@@ -45,11 +30,18 @@ void setup() {
 
   // Wait until a Serial Monitor is connected.
   while (!Serial);
+  Serial.println('restful spider sketch');
+
+  // run an initial date process. Should return:
+  // hh:mm:ss :
+  if (!date.running()) {
+    date.begin("date");
+    date.addParameter("+%s");
+    date.run();
+  }
   
   // launch the echo.js script asynchronously:
   nodejs.runShellCommandAsynchronously("node /mnt/sda1/arduino/RESTfulSpider/server.js");
-
-  Serial.println("Started process");
 }
 
 void loop() {
@@ -62,51 +54,44 @@ void loop() {
   //if there's a result from the date process, parse it:
   runDate();
 
-  getDate();
+  parseDate();
   
 }
 
 
 void runDate() {
-  if (lastSecond != seconds) { // if a second has passed
-    // print the time:
-    if (hours <= 9) Serial.print("0");    // adjust for 0-9
-    Serial.print(hours);
-    Serial.print(":");
-    if (minutes <= 9) Serial.print("0");  // adjust for 0-9
-    Serial.print(minutes);
-    Serial.print(":");
-    if (seconds <= 9) Serial.print("0");  // adjust for 0-9
-    Serial.println(seconds);
+  if (lastTime != unixTime) { // if a second has passed
+
+    Serial.println(unixTime);
 
     // restart the date process:
     if (!date.running()) {
       date.begin("date");
-      date.addParameter("+%T");
+      date.addParameter("+%s");
       date.run();
     }
   }
 }
 
-void getDate() {
+void parseDate() {
   while (date.available() > 0) {
     // get the result of the date process (should be hh:mm:ss):
     String timeString = date.readString();
 
     // find the colons:
-    int firstColon = timeString.indexOf(":");
-    int secondColon = timeString.lastIndexOf(":");
+    //    int firstColon = timeString.indexOf(":");
+    //    int secondColon = timeString.lastIndexOf(":");
 
     // get the substrings for hour, minute second:
-    String hourString = timeString.substring(0, firstColon);
-    String minString = timeString.substring(firstColon + 1, secondColon);
-    String secString = timeString.substring(secondColon + 1);
+    //    String hourString = timeString.substring(0, firstColon);
+    //    String minString = timeString.substring(firstColon + 1, secondColon);
+    //    String secString = timeString.substring(secondColon + 1);
 
     // convert to ints,saving the previous second:
-    hours = hourString.toInt();
-    minutes = minString.toInt();
-    lastSecond = seconds;          // save to do a time comparison
-    seconds = secString.toInt();
+    //    hours = hourString.toInt();
+    //    minutes = minString.toInt();
+    lastTime = unixTime;          // save to do a time comparison
+    unixTime = timeString;
   }  
 }
 
