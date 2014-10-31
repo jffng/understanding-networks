@@ -1,6 +1,8 @@
 var servi = require('servi'),
 	app = new servi(true);
 
+var getDropTime = null;
+
 ////////////////////////////////////////////////////////////////////////////////////
 ///																				////
 ///							INIT SERVI, SETUP ROUTES							////
@@ -17,8 +19,8 @@ app.route('/in/:time/:units', dropInTime);
 app.route('/at/:hour/:min/:second', dropAtTime);
 // app.route('/at*')
 
-// app.route('/schedule', getSchedule);
-// app.route('/evil/plan', getSchedule);
+app.route('/schedule', getSchedule);
+app.route('/evil/plan', getSchedule);
 
 app.start();
 app.listen(8080);
@@ -48,6 +50,8 @@ function dropInTime (request) {
 
 			now.setHours(hour);
 
+			getDropTime = now;
+
 			dropTime = Math.round(now.getTime() / 1000);
 
 			break;
@@ -57,6 +61,8 @@ function dropInTime (request) {
 			// console.log(minute);
 
 			now.setMinutes(minute);
+
+			getDropTime = now;
 
 			dropTime = Math.round(now.getTime() / 1000);
 
@@ -68,6 +74,8 @@ function dropInTime (request) {
 
 			now.setSeconds(second);
 
+			getDropTime = now;	
+
 			dropTime = Math.round(now.getTime() / 1000);
 
 			break;
@@ -77,27 +85,38 @@ function dropInTime (request) {
 
 	console.log(dropTime);
 
-	request.respond("OK");
+	var responseString = "Spider will drop at " + getDropTime + "!"; 
+
+	request.respond(responseString);
 }
 
 function dropAtTime (request) {
 	var now = new Date();
-
+	var then = new Date();
 	var dropTime;
 
-	now.setHours(parseInt(request.params.hour));
-	now.setMinutes(parseInt(request.params.min));
-	now.setSeconds(parseInt(request.params.second));
+	then.setHours(parseInt(request.params.hour));
+	then.setMinutes(parseInt(request.params.min));
+	then.setSeconds(parseInt(request.params.second));
 
-	dropTime = Math.round(now.getTime() / 1000);
+	if(then.getTime() < now.getTime()){
+		then.setHours(then.getHours()+24);
+	}
+
+	getDropTime = then;
+
+	dropTime = Math.round(then.getTime() / 1000);
 
 	console.log(dropTime);
 
-	request.respond("OK");
+	var responseString = "Spider will drop at " + getDropTime + "!"; 
 
+	request.respond(responseString);
 }
 
 function getSchedule (request) {
-	// body...
+	var responseString = "Spider will drop at " + getDropTime + "!"; 
+
+	request.respond(responseString);
 }
 

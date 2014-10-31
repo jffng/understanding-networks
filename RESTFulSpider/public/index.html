@@ -78,7 +78,7 @@
 			function dropAt() {
 				var request = new XMLHttpRequest();
 				// GET /output/color/level, and make an asynchronous request:
-				request.open( "POST", '/at/' + hour.value + "/" + minute.value + "/" + second.value, true );
+				request.open( "GET", '/at/' + hour.value + "/" + minute.value + "/" + second.value, true );
 				// close the request:
 				request.send( null );				
 			}
@@ -86,7 +86,7 @@
 			function dropIn() {
 				var request = new XMLHttpRequest();
 				// GET /output/color/level, and make an asynchronous request:
-				request.open( "POST", '/in/' + time.value + "/" + units.value, true );
+				request.open( "GET", '/in/' + time.value + "/" + units.value, true );
 				// close the request:
 				request.send( null );				
 			}
