@@ -1,7 +1,7 @@
 var servi = require('servi'),
 	app = new servi(true);
 
-var getDropTime = null;
+var getDropTime;
 
 ////////////////////////////////////////////////////////////////////////////////////
 ///																				////
@@ -17,10 +17,11 @@ app.route('/', sendIndex);
 app.route('/in/:time/:units', dropInTime);
 
 app.route('/at/:hour/:min/:second', dropAtTime);
-// app.route('/at*')
 
 app.route('/schedule', getSchedule);
 app.route('/evil/plan', getSchedule);
+// app.route('/*', getSchedule);
+
 
 app.start();
 app.listen(8080);
@@ -85,7 +86,8 @@ function dropInTime (request) {
 
 	console.log(dropTime);
 
-	var responseString = "Spider will drop at " + getDropTime + "!"; 
+	var responseString = "Spider will drop on " + getDropTime.toDateString() +  
+										", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime	.getSeconds();
 
 	request.respond(responseString);
 }
@@ -109,13 +111,15 @@ function dropAtTime (request) {
 
 	console.log(dropTime);
 
-	var responseString = "Spider will drop at " + getDropTime + "!"; 
+	var responseString = "Spider will drop on " + getDropTime.toDateString() + 
+										", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds(); 
 
 	request.respond(responseString);
 }
 
 function getSchedule (request) {
-	var responseString = "Spider will drop at " + getDropTime + "!"; 
+	var responseString = "Spider will drop on " + getDropTime.toDateString() + 
+										", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds();
 
 	request.respond(responseString);
 }

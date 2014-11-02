@@ -5,30 +5,31 @@
 	</head>
 	<body onload="setup();">
 		<div id="clock">What time is it?</div>
-		<br>
-		<h4> Spider will drop at this time*: </h4>
-		<br>
-		<select name="hour" id='hour'>
-		</select>
-		<select name="minute" id='minute'>
-		</select>
-		<select name="second" id='second'>
-		</select>
-		<button onclick="dropAt()">submit</button>	
-		<h6> *must be later than current day's time </h4>
-		<br>		
-		<br>
-		<h3> OR </h3>
-		<br>
-		<h4> Spider will drop in this many hours, minutes, seconds <h4>
-		<input type="text" id="time">
-		<select name="units" id='units'>
-			<option name = 'hours' id='hours'>hour(s)</option>
-			<option name = 'minutes' id='minutes'>minute(s)</option>
-			<option name = 'seconds' id='seconds'>second(s)</option>
-		</select>		
-		<button onclick="dropIn()">submit</button>	
 
+		<div id="container">
+			<br>
+			<h4> Spider will drop at this time*: </h4>
+			<br>
+				<select name="hour" id='hour'>
+				</select>
+				<select name="minute" id='minute'>
+				</select>
+				<select name="second" id='second'>
+				</select>
+				<button onclick="dropAt()">submit</button>				
+			
+			<br>
+			<h3> OR </h3>
+			<h4> Spider will drop in this many hours, minutes, seconds <h4>
+
+			<input type="text" id="time">
+			<select name="units" id='units'>
+				<option name = 'hours' id='hours'>hour(s)</option>
+				<option name = 'minutes' id='minutes'>minute(s)</option>
+				<option name = 'seconds' id='seconds'>second(s)</option>
+			</select>		
+			<button onclick="dropIn()">submit</button>	
+		</div>
 		<script type="text/javascript">
 			function setup() {
 				// start the clock
@@ -80,16 +81,39 @@
 				// GET /output/color/level, and make an asynchronous request:
 				request.open( "GET", '/at/' + hour.value + "/" + minute.value + "/" + second.value, true );
 				// close the request:
-				request.send( null );				
+				request.send( null );
+
+				request.onreadystatechange=function () {
+					document.getElementById('container').innerHTML = request.responseText;
+				} 
+
+				// document.getElementById("container").innerHTML = request.responseText;										
 			}
 
 			function dropIn() {
-				var request = new XMLHttpRequest();
-				// GET /output/color/level, and make an asynchronous request:
-				request.open( "GET", '/in/' + time.value + "/" + units.value, true );
-				// close the request:
-				request.send( null );				
+				if(validateForm(time)){
+					var request = new XMLHttpRequest();
+					// GET /output/color/level, and make an asynchronous request:
+					request.open( "GET", '/in/' + time.value + "/" + units.value, true );
+					// close the request:
+					request.send( null );		
+
+					request.onreadystatechange=function () {
+						document.getElementById('container').innerHTML = request.responseText;
+					}	
+				}
+			
+				
 			}
+
+			function validateForm(element) {
+				var x = element.value;
+				if (x == null || x == "") {
+					alert("Enter a time, yo!");
+					return false;
+				}
+				else return true;
+			}			
 
 		</script>		
 	</body>
