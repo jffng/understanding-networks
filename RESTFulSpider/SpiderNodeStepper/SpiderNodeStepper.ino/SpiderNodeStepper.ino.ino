@@ -15,46 +15,91 @@
  */
 
 #include <Process.h>
-Process nodejs;    // make a new Process for calling Node
-Process date;                 // process used to get the date
-String unixTime;  // for the results
-String lastTime = "";          // need an impossible value for comparison
-boolean spiderRun = false;
-int nodemessage;
+#include <Stepper.h>
 
+Process nodejs;    // make a new Process for calling Node
+
+const int stepsPerRevolution = 200;
+Stepper myStepper(stepsPerRevolution, 8, 9, 10, 11);
+
+int spinCount = 15;
+boolean spiderRun = false;
+boolean up = false;
+boolean down = false;
 
 void setup() {
   Bridge.begin();	// Initialize the Bridge
   Serial.begin(9600);	// Initialize the Serial
+  myStepper.setSpeed(120);
 
   // Wait until a Serial Monitor is connected.
-  while (!Serial);
+//  while (!Serial);
+  delay(5000);
   
   // launch the echo.js script asynchronously:
   nodejs.runShellCommandAsynchronously("node /mnt/sda1/arduino/RESTfulSpider/server.js");
+  
+  dropDown(1);
+  pullUp(1);
 }
 
 void loop() {
   // pass any incoming bytes from the running node process
   // to the serial port:
   while (nodejs.available()) {
-    Serial.write(nodejs.read());
-    
-    nodemessage = nodejs.read();
-//    if(nodejs.read() == 1){
-//      Serial.println("DROP THE SPIDER, YO");
-//      spiderRun = true;
-//    }
-//    else{
-//      spiderRun = false;
-//    }
+    char c = nodejs.read();
+    Serial.print(c);
+    if(c == '1'){
+      spiderRun = true;      
+    }
+    if(c == '2'){
+      up = true;
+    }
+    if(c == '3'){
+      down = true;
+    }
   }
-  if(nodemessage){
-      Serial.println(nodemessage);
-  }
-    
+   
+  if( spiderRun == true ) stepperSpin();   
+  if( up == true )        pullUp(1);
+  if( down == true )      dropDown(1);
+   
 }
 
+void stepperSpin(){
+  for( int i = 0; i < spinCount; i++){
+    //Serial.println("clockwise");
+    myStepper.step(stepsPerRevolution);
+  }
+  
+  delay(6000);
+  
+  for( int i = 0; i < spinCount; i++){
+    myStepper.step(-stepsPerRevolution);
+  }
+  
+  delay(100);
+  
+  spiderRun = false;
+}
+
+void pullUp(int numSteps){
+  for( int i = 0; i < numSteps; i++){
+    //Serial.println("clockwise");
+    myStepper.step(-stepsPerRevolution);
+  }
+  
+  up = false;
+}
+
+void dropDown(int numSteps){
+  for( int i = 0; i < numSteps; i++){
+    //Serial.println("clockwise");
+    myStepper.step(stepsPerRevolution);
+  }
+  
+  down = false;
+}
 
 
 

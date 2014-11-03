@@ -36,12 +36,18 @@
 			<h4> Spider will drop in this many hours / minutes / seconds: <h4>
 
 			<input type="text" id="time">
+
 			<select name="units" id='units'>
 				<option name = 'hours' id='hours'>hour(s)</option>
 				<option name = 'minutes' id='minutes'>minute(s)</option>
 				<option name = 'seconds' id='seconds'>second(s)</option>
 			</select>		
-			<button onclick="dropIn()">submit</button>	
+			<button onclick="dropIn()">submit</button><br>
+			<br> ------------------------------------------------------------------<br>
+			<br>
+			<button onclick="pullUp()">Pull Spider Up</button>
+			<br>
+			<button onclick="dropDown()">Drop Spider Down</button>
 		</div>
 		<script type="text/javascript">
 			function setup() {
@@ -116,8 +122,22 @@
 						document.getElementById('container').innerHTML = request.responseText;
 					}	
 				}
-			
-				
+			}
+
+			function pullUp(){
+				var request = new XMLHttpRequest();
+				// GET /output/color/level, and make an asynchronous request:
+				request.open( "GET", '/up', true );
+				// close the request:
+				request.send( null );				
+			}
+
+			function dropDown(){
+				var request = new XMLHttpRequest();
+				// GET /output/color/level, and make an asynchronous request:
+				request.open( "GET", '/down', true );
+				// close the request:
+				request.send( null );				
 			}
 
 			function validateForm(element) {

@@ -17,13 +17,15 @@ app.serveFiles('public');
 app.route('/', sendIndex);
 
 app.route('/in/:time/:units', dropInTime);
-
 app.route('/at/:hour/:min/:second', dropAtTime);
 
 app.route('/schedule', getSchedule);
 app.route('/evil/plan', getSchedule);
-app.route('/:', getSchedule);
 
+app.route('/up', pullUp);
+app.route('/down', dropDown);
+
+// app.route('*', redirect);
 
 app.start();
 app.listen(8080);
@@ -137,11 +139,31 @@ function dropAtTime (request) {
 	request.respond(responseString);
 }
 
+function pullUp(request){
+	console.log(2);
+
+	request.respond('going up!');
+}
+
+function dropDown(request){
+	console.log(3);
+
+	request.respond('going down!');
+}
+
 function getSchedule (request) {
-	var responseString = "Spider will drop on " + getDropTime.toDateString() + 
-										", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds();
+	if(getDropTime != null){
+		var responseString = "Spider will drop on " + getDropTime.toDateString() + 
+											", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds();
+	} else {
+		var responseString = "No drop time has been set! Visit http://128.122.6.33:8080 to set a time."
+	}
 
 	request.respond(responseString);
+}
+
+function redirect(request){
+	request.redirect('/');
 }
 
 //////////////
