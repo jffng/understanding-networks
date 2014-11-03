@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
-
+	<style type="text/css">
+		body {
+			background: url(/img/spiderweb.jpg) no-repeat center center fixed;
+			width: 100%;
+			font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;			
+		}		
+		#container {
+			padding: 5%;
+		}
+	</style>
 	</head>
 	<body onload="setup();">
-		<div id="clock">What time is it?</div>
 
 		<div id="container">
+			<div id="clock">What time is it?</div>
+
 			<br>
-			<h4> Spider will drop at this time*: </h4>
-			<br>
+			<h4> Spider will drop at this time: </h4>
 				<select name="hour" id='hour'>
 				</select>
 				<select name="minute" id='minute'>
@@ -20,7 +33,7 @@
 			
 			<br>
 			<h3> OR </h3>
-			<h4> Spider will drop in this many hours, minutes, seconds <h4>
+			<h4> Spider will drop in this many hours / minutes / seconds: <h4>
 
 			<input type="text" id="time">
 			<select name="units" id='units'>
@@ -57,11 +70,11 @@
 					minute.appendChild(option);
 				}
 
-				for(var i = 0; i < 60; i++){
+				for(var i = 0; i < 6; i++){
 					var option = document.createElement("option");
-					var t = document.createTextNode(i);
+					var t = document.createTextNode(i*10);
 					option.appendChild(t)
-					option.value = i;
+					option.value = i*10;
 
 					second.appendChild(option);
 				}								
@@ -70,10 +83,11 @@
 			function tick() {
 				// get the div that the clock should be in:
 				var myClock = document.getElementById('clock');
-				// get the date:
-				var now = new Date();
-				// put the date in the div:
-				myClock.innerHTML = now;
+				if(myClock){
+					var now = new Date();
+					// put the date in the div:
+					myClock.innerHTML = now;					
+				}
 			}
 
 			function dropAt() {

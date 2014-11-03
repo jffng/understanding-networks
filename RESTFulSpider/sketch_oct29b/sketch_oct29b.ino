@@ -49,6 +49,8 @@ void loop() {
   // to the serial port:
   while (nodejs.available()) {
     Serial.write(nodejs.read());
+    
+    whenwillthespiderdrop = nodejs.read();
   }
  
   //if there's a result from the date process, parse it:
@@ -56,6 +58,10 @@ void loop() {
 
   parseDate();
   
+  if(unixTime - whenwillthespiderdrop < 2){
+    stepperSpin();
+  }
+    
 }
 
 

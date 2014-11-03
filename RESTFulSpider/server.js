@@ -3,6 +3,8 @@ var servi = require('servi'),
 
 var getDropTime;
 
+var schedule = [];
+
 ////////////////////////////////////////////////////////////////////////////////////
 ///																				////
 ///							INIT SERVI, SETUP ROUTES							////
@@ -20,7 +22,7 @@ app.route('/at/:hour/:min/:second', dropAtTime);
 
 app.route('/schedule', getSchedule);
 app.route('/evil/plan', getSchedule);
-// app.route('/*', getSchedule);
+app.route('/:', getSchedule);
 
 
 app.start();
@@ -51,9 +53,9 @@ function dropInTime (request) {
 
 			now.setHours(hour);
 
-			getDropTime = now;
+			// getDropTime = now;
 
-			dropTime = Math.round(now.getTime() / 1000);
+			// dropTime = Math.round(now.getTime() / 1000);
 
 			break;
 		case 'minute(s)':
@@ -63,9 +65,9 @@ function dropInTime (request) {
 
 			now.setMinutes(minute);
 
-			getDropTime = now;
+			// getDropTime = now;
 
-			dropTime = Math.round(now.getTime() / 1000);
+			// dropTime = Math.round(now.getTime() / 1000);
 
 			break;
 		case 'second(s)':
@@ -75,19 +77,29 @@ function dropInTime (request) {
 
 			now.setSeconds(second);
 
-			getDropTime = now;	
-
-			dropTime = Math.round(now.getTime() / 1000);
+			// dropTime = Math.round(now.getTime() / 1000);
 
 			break;
 		default:
 			break;
 	}
 
-	console.log(dropTime);
+	getDropTime = now;
 
-	var responseString = "Spider will drop on " + getDropTime.toDateString() +  
-										", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime	.getSeconds();
+	dropTime = Math.round(now.getTime() / 1000 );
+
+	if(schedule.length == 0) schedule.push(dropTime);
+	else {
+		for(var i = 0; i < schedule.length; i++){
+			if(schedule[i] != dropTime) schedule.push(dropTime);
+			// else console.log("ALREADY HERE");		
+		}
+	}
+
+	// console.log(dropTime);
+
+	var responseString = "Spider will drop on " + now.toDateString() +  
+										", at " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
 	request.respond(responseString);
 }
@@ -109,7 +121,15 @@ function dropAtTime (request) {
 
 	dropTime = Math.round(then.getTime() / 1000);
 
-	console.log(dropTime);
+	if(schedule.length == 0) schedule.push(dropTime);
+	else {
+		for(var i = 0; i < schedule.length; i++){
+			if(schedule[i] != dropTime) schedule.push(dropTime);
+			// else console.log("ALREADY HERE");		
+		}
+	}
+
+	// console.log(dropTime);
 
 	var responseString = "Spider will drop on " + getDropTime.toDateString() + 
 										", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds(); 
@@ -124,3 +144,22 @@ function getSchedule (request) {
 	request.respond(responseString);
 }
 
+//////////////
+///
+///
+///
+
+function checkDrop(){
+	var now = new Date();
+
+	now = Math.round(now.getTime() / 1000);
+
+	for(var i = 0; i < schedule.length; i++){
+		if(schedule[i] - now < 1) {
+			schedule.splice(i, 1);
+			console.log(1);
+		}
+	}
+}
+
+setInterval(checkDrop, 1000);
