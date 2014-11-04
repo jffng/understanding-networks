@@ -2,6 +2,7 @@ var servi = require('servi'),
 	app = new servi(true);
 
 var getDropTime;
+var lastDrop = 0;
 
 var schedule = [];
 
@@ -16,7 +17,7 @@ app.serveFiles('public');
 
 app.route('/', sendIndex);
 
-app.route('/in/:time/:units', dropInTime);
+app.route('/in/:hours/:minutes/:seconds', dropInTime);
 app.route('/at/:hour/:min/:second', dropAtTime);
 
 app.route('/schedule', getSchedule);
@@ -43,65 +44,45 @@ function sendIndex (request) {
 function dropInTime (request) {
 	var now = new Date();
 
-	// console.log(Math.round(now.getTime()/1000));
-
 	var dropTime;
 
-	switch(request.params.units){
-		case 'hour(s)':
-			var hour = parseInt(request.params.time) + now.getHours();
+	var hours = now.getHours() + parseInt(request.params.hours);
+	var minutes = now.getMinutes() + parseInt(request.params.minutes);
+	var seconds = now.getSeconds() + parseInt(request.params.seconds);
 
-			// console.log(hour);
-
-			now.setHours(hour);
-
-			// getDropTime = now;
-
-			// dropTime = Math.round(now.getTime() / 1000);
-
-			break;
-		case 'minute(s)':
-			var minute = parseInt(request.params.time) + now.getMinutes();
-
-			// console.log(minute);
-
-			now.setMinutes(minute);
-
-			// getDropTime = now;
-
-			// dropTime = Math.round(now.getTime() / 1000);
-
-			break;
-		case 'second(s)':
-			var second = parseInt(request.params.time) + now.getSeconds();
-
-			// console.log(second);
-
-			now.setSeconds(second);
-
-			// dropTime = Math.round(now.getTime() / 1000);
-
-			break;
-		default:
-			break;
-	}
+	now.setHours(hours);
+	now.setMinutes(minutes);
+	now.setSeconds(seconds);
 
 	getDropTime = now;
 
 	dropTime = Math.round(now.getTime() / 1000 );
 
-	if(schedule.length == 0) schedule.push(dropTime);
-	else {
+	var responseString;
+
+	if( schedule.length == 0 ){
+		schedule.push(dropTime);
+		responseString = "Spider will drop on " + getDropTime.toDateString() + 
+											", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds(); 
+	} else {
+		var scheduled = false;
+
 		for(var i = 0; i < schedule.length; i++){
-			if(schedule[i] != dropTime) schedule.push(dropTime);
-			// else console.log("ALREADY HERE");		
+			var mVal = Math.abs(schedule[i] - dropTime);
+
+			if(mVal < 20 ){
+				responseString = "Spider is busy! ";
+				scheduled = true;
+				// console.log(Math.abs(schedule[i] - dropTime));
+			}
+		}
+
+		if( scheduled == false ) {
+			schedule.push(dropTime);				
+			responseString = "Spider will drop on " + getDropTime.toDateString() + 
+											", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds(); 
 		}
 	}
-
-	// console.log(dropTime);
-
-	var responseString = "Spider will drop on " + now.toDateString() +  
-										", at " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
 	request.respond(responseString);
 }
@@ -123,19 +104,32 @@ function dropAtTime (request) {
 
 	dropTime = Math.round(then.getTime() / 1000);
 
-	if(schedule.length == 0) schedule.push(dropTime);
-	else {
+	var responseString;
+
+	if( schedule.length == 0 ){
+		schedule.push(dropTime);
+		responseString = "Spider will drop on " + getDropTime.toDateString() + 
+											", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds(); 
+	} else {
+		var scheduled = false;
+
 		for(var i = 0; i < schedule.length; i++){
-			if(schedule[i] != dropTime) schedule.push(dropTime);
-			// else console.log("ALREADY HERE");		
+			var mVal = Math.abs(schedule[i] - dropTime);
+
+			if(mVal < 20 ){
+				responseString = "Spider is busy!";
+				scheduled = true;
+				// console.log(Math.abs(schedule[i] - dropTime));
+			}
 		}
-	}
 
-	// console.log(dropTime);
-
-	var responseString = "Spider will drop on " + getDropTime.toDateString() + 
-										", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds(); 
-
+		if( scheduled == false ) {
+			schedule.push(dropTime);				
+			responseString = "Spider will drop on " + getDropTime.toDateString() + 
+											", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds(); 
+		}
+	}					
+		
 	request.respond(responseString);
 }
 
@@ -152,11 +146,29 @@ function dropDown(request){
 }
 
 function getSchedule (request) {
-	if(getDropTime != null){
-		var responseString = "Spider will drop on " + getDropTime.toDateString() + 
-											", at " + getDropTime.getHours() + ":" + getDropTime.getMinutes() + ":" + getDropTime.getSeconds();
-	} else {
-		var responseString = "No drop time has been set! Visit http://128.122.6.33:8080 to set a time."
+	var responseString = "Spider will drop at the following times: <br>";
+
+	if(schedule.length > 0){
+		var now = new Date();
+		for(var i = 0; i < schedule.length; i++){
+			if(schedule[i] > Math.round(now.getTime() / 1000)){
+				var date = new Date(schedule[i]*1000);
+				// console.log(date);
+				// hours part from the timestamp
+				var hours = date.getHours();
+				// minutes part from the timestamp
+				var minutes = "0" + date.getMinutes();
+				// seconds part from the timestamp
+				var seconds = "0" + date.getSeconds();
+
+				// will display time in 10:30:23 format
+				var formattedTime = hours + ':' + minutes.substr(minutes.length-2) + ':' + seconds.substr(seconds.length-2);
+
+				responseString += formattedTime + '<br>';	
+			}
+		}
+	} else{
+		responseString = "No drop time has been set! Visit http://bit.do/restfulspider to set a time.";
 	}
 
 	request.respond(responseString);
@@ -177,11 +189,11 @@ function checkDrop(){
 	now = Math.round(now.getTime() / 1000);
 
 	for(var i = 0; i < schedule.length; i++){
-		if(schedule[i] - now < 1) {
-			schedule.splice(i, 1);
+		if(schedule[i] - now == 0) {
+			//schedule.splice(i, 1);
 			console.log(1);
 		}
 	}
 }
 
-setInterval(checkDrop, 1000);
+setInterval(checkDrop, 750);

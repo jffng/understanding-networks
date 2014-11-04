@@ -3,13 +3,15 @@
 	<head>
 	<style type="text/css">
 		body {
-			background: url(/img/spiderweb.jpg) no-repeat center center fixed;
+			background: url(/img/spiderblack.jpg) no-repeat right top fixed;
 			width: 100%;
 			font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
-			background-size: cover;			
+			background-size: cover;	
+			color: white;
+			background-color: black;	
 		}		
 		#container {
 			padding: 5%;
@@ -19,30 +21,31 @@
 	<body onload="setup();">
 
 		<div id="container">
+			<div><h1>RESTful Spider</h1></div>
 			<div id="clock">What time is it?</div>
 
 			<br>
 			<h4> Spider will drop at this time: </h4>
 				<select name="hour" id='hour'>
-				</select>
+				</select> :
 				<select name="minute" id='minute'>
-				</select>
+				</select> :
 				<select name="second" id='second'>
 				</select>
 				<button onclick="dropAt()">submit</button>				
 			
 			<br>
 			<h3> OR </h3>
-			<h4> Spider will drop in this many hours / minutes / seconds: <h4>
+			<h4> Spider will drop in this many hours : minutes : seconds: <h4>
 
-			<input type="text" id="time">
-
-			<select name="units" id='units'>
-				<option name = 'hours' id='hours'>hour(s)</option>
-				<option name = 'minutes' id='minutes'>minute(s)</option>
-				<option name = 'seconds' id='seconds'>second(s)</option>
-			</select>		
-			<button onclick="dropIn()">submit</button><br>
+				<select name="inhours" id='inhours'>
+				</select> :
+				<select name="inminutes" id='inminutes'>
+				</select> :
+				<select name="inseconds" id='inseconds'>
+				</select>	
+				<button onclick="dropIn()">submit</button><br>
+			
 			<br> ------------------------------------------------------------------<br>
 			<br>
 			<button onclick="pullUp()">Pull Spider Up</button>
@@ -54,9 +57,11 @@
 				// start the clock
 				setInterval(tick, 1000);
 				var hour = document.getElementById('hour');
-				var hours = document.getElementById('hours');
-				var seconds = document.getElementById('seconds');
-				var minutes = document.getElementById('minutes');
+				var inhours = document.getElementById('inhours');
+				var seconds = document.getElementById('second');
+				var inseconds = document.getElementById('inseconds');
+				var minutes = document.getElementById('minute');
+				var inminutes = document.getElementById('inminutes');
 
 				for(var i = 0; i < 24; i++){
 					var option = document.createElement("option");
@@ -65,6 +70,15 @@
 					option.value = i;
 
 					hour.appendChild(option);
+				}
+
+				for(var i = 0; i < 24; i++){
+					var option = document.createElement("option");
+					var t = document.createTextNode(i);
+					option.appendChild(t)
+					option.value = i;
+
+					inhours.appendChild(option);
 				}
 
 				for(var i = 0; i < 60; i++){
@@ -76,14 +90,32 @@
 					minute.appendChild(option);
 				}
 
-				for(var i = 0; i < 6; i++){
+				for(var i = 0; i < 60; i++){
 					var option = document.createElement("option");
-					var t = document.createTextNode(i*10);
+					var t = document.createTextNode(i);
 					option.appendChild(t)
-					option.value = i*10;
+					option.value = i;
+
+					inminutes.appendChild(option);
+				}
+
+				for(var i = 0; i < 12; i++){
+					var option = document.createElement("option");
+					var t = document.createTextNode(i*5);
+					option.appendChild(t)
+					option.value = i*5;
 
 					second.appendChild(option);
-				}								
+				}
+
+				for(var i = 0; i < 12; i++){
+					var option = document.createElement("option");
+					var t = document.createTextNode(i*5);
+					option.appendChild(t)
+					option.value = i*5;
+
+					inseconds.appendChild(option);
+				}												
 			}
 			
 			function tick() {
@@ -111,17 +143,15 @@
 			}
 
 			function dropIn() {
-				if(validateForm(time)){
-					var request = new XMLHttpRequest();
-					// GET /output/color/level, and make an asynchronous request:
-					request.open( "GET", '/in/' + time.value + "/" + units.value, true );
-					// close the request:
-					request.send( null );		
+				var request = new XMLHttpRequest();
+				// GET /output/color/level, and make an asynchronous request:
+				request.open( "GET", '/in/' + inhours.value + "/" + inminutes.value + "/" + inseconds.value, true );
+				// close the request:
+				request.send( null );		
 
-					request.onreadystatechange=function () {
-						document.getElementById('container').innerHTML = request.responseText;
-					}	
-				}
+				request.onreadystatechange=function () {
+					document.getElementById('container').innerHTML = request.responseText;
+				}	
 			}
 
 			function pullUp(){
@@ -138,16 +168,7 @@
 				request.open( "GET", '/down', true );
 				// close the request:
 				request.send( null );				
-			}
-
-			function validateForm(element) {
-				var x = element.value;
-				if (x == null || x == "") {
-					alert("Enter a time, yo!");
-					return false;
-				}
-				else return true;
-			}			
+			}		
 
 		</script>		
 	</body>

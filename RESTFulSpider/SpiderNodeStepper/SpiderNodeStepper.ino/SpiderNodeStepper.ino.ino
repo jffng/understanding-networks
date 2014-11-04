@@ -31,16 +31,14 @@ void setup() {
   Bridge.begin();	// Initialize the Bridge
   Serial.begin(9600);	// Initialize the Serial
   myStepper.setSpeed(120);
-
+  dropDown(1);
+  pullUp(1);
   // Wait until a Serial Monitor is connected.
 //  while (!Serial);
   delay(5000);
   
   // launch the echo.js script asynchronously:
   nodejs.runShellCommandAsynchronously("node /mnt/sda1/arduino/RESTfulSpider/server.js");
-  
-  dropDown(1);
-  pullUp(1);
 }
 
 void loop() {
@@ -52,10 +50,10 @@ void loop() {
     if(c == '1'){
       spiderRun = true;      
     }
-    if(c == '2'){
+    if(c == '2' && spiderRun == false){
       up = true;
     }
-    if(c == '3'){
+    if(c == '3' && spiderRun == false){
       down = true;
     }
   }
