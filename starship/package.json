@@ -1,0 +1,19 @@
+{
+  "name": "starship",
+  "version": "0.0.0",
+  "description": "playback starship on receiving xbee input from serial",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "xbee"
+  ],
+  "author": "joelle flaurentin, jeff ong",
+  "license": "MIT",
+  "dependencies": {
+    "serialport": "~1.4.6",
+    "express": "~4.10.2"
+  }
+}
